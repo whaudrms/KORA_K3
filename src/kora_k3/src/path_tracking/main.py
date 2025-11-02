@@ -14,7 +14,7 @@ from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Pose2D
 from std_msgs.msg import Float64
 from obstacle.follow_the_gap import Follow_the_gap
-from kora_k3.src.path_tracking.pure_pursuit import Pure_pursuit
+from path_tracking.pure_pursuit import Pure_pursuit
 from path_tracking.PID_control import PIDController
 import numpy as np
 
@@ -25,7 +25,7 @@ class Controller:
         self.servo_pub = rospy.Publisher('/commands/servo/position', Float64, queue_size=1)
         self.follow_gap = Follow_the_gap()
         self.pure_pursuit = Pure_pursuit()
-        self.gap_threshold = 0.7 # lidar detection range (m)
+        self.gap_threshold = 1.0 # lidar detection range (m)
         self.transfer = 1000/0.13
 
         self.scan_msg = None

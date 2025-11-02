@@ -14,9 +14,9 @@ class Pure_pursuit:
 
         # Target velocity 파라미터
         self.target_speed = 2.5 # 기본 목표 속도
-        self.max_speed = 2.5
+        self.max_speed = 2.0
         self.min_speed = 0.5
-        self.alpha = 1.5
+        self.alpha = 2.0
 
         self.csv_file = "/root/KORA_K3/src/kora_k3/src/path_planning/outputs/waypoints.csv"
         self.waypoints = self.load_waypoints()

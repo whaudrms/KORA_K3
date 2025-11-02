@@ -163,7 +163,6 @@ catkin_install_python(PROGRAMS
   src/sensor_hub/imu_pub.py
   src/odometry/wheel_odom_node.py
   src/path_tracking/pure_pursuit.py
-  src/path_tracking/lookahead.py
   src/obstacle/follow_the_gap.py
   src/path_tracking/main.py
   src/path_tracking/waypoint_visualization.py
