@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     tzdata locales curl gnupg2 lsb-release ca-certificates \
     iproute2 net-tools iputils-ping netcat \
     openssh-client wget vim less git nano pip \
-    mesa-utils libgl1-mesa-glx libglu1-mesa \
+    mesa-utils libgl1-mesa-glx libglu1-mesa libceres-dev \
     libx11-6 libxext6 libxrender1 libxrandr2 libxi6 libxinerama1 \
  && ln -fs /usr/share/zoneinfo/$TZ /etc/localtime \
  && dpkg-reconfigure -f noninteractive tzdata \
@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
     ros-noetic-sparse-bundle-adjustment \ 
     ros-noetic-map-server ros-noetic-map-server \
     ros-noetic-geographic-msgs ros-noetic-ackermann-msgs \
-    sudo apt install ros-noetic-amcl \ 
+    ros-noetic-amcl \ 
     libgeographic-dev python3-tk python3-shapely \   
  && apt-get clean && rm -rf /var/lib/apt/lists/*
  

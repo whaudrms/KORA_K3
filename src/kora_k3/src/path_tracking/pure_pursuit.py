@@ -12,9 +12,11 @@ class Pure_pursuit:
             rospy.init_node("pure_pursuit_node", anonymous=True)
             rospy.Subscriber("/base_link_pose", Pose2D, self.base_callback)
 
+        # Target velocity 파라미터
         self.target_speed = 2.5 # 기본 목표 속도
         self.max_speed = 2.5
         self.min_speed = 0.5
+        self.alpha = 1.5
 
         self.csv_file = "/root/KORA_K3/src/kora_k3/src/path_planning/outputs/waypoints.csv"
         self.waypoints = self.load_waypoints()
@@ -38,7 +40,7 @@ class Pure_pursuit:
         if pose_msg is None:
             return None, None
         
-        self.target_speed = (self.max_speed-self.min_speed)*np.exp(-(abs(self.curvature)))+self.min_speed
+        self.target_speed = (self.max_speed-self.min_speed)*np.exp(-self.alpha*abs(self.curvature))+self.min_speed
         print(self.target_speed)
 
         if current_speed is None:

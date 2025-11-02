@@ -10,7 +10,7 @@
   <include file="$(find kora_k3)/launch/amcl.launch"/>
 
   <!-- RViz visualization aligned with mapping workflow -->
-  <node pkg="rviz" type="rviz" name="mapping_rviz"
+  <node pkg="rviz" type="rviz" name="localization_rviz"
         args="-d $(find kora_k3)/config/localization.rviz"
         output="screen"/>
 </launch>

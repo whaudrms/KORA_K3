@@ -4,14 +4,13 @@ services:
     container_name: kora_k3
     network_mode: host
 
-    gpus: all
+    # gpus: all
     environment:
       TZ: Asia/Seoul
       DISPLAY: ${DISPLAY}
       QT_X11_NO_MITSHM: "1"
-      NVIDIA_VISIBLE_DEVICES: "all"
-      NVIDIA_DRIVER_CAPABILITIES: "compute,utility,graphics,video,display"
-
+      LIBGL_ALWAYS_SOFTWARE: "1"       
+  
     volumes:
       - ~/.ssh:/root/.ssh:ro
       - ./logs:/root/logs
