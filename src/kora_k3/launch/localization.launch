@@ -1,0 +1,16 @@
+<!-- file: mapping.launch -->
+<launch>
+  <!-- 1. Robot state publishers -->
+  <include file="$(find kora_k3)/launch/k3_state.launch"/>
+
+  <!-- 2. Wheel odometry and localization stack -->
+  <include file="$(find kora_k3)/launch/wheel_odom.launch"/>
+
+  <!-- 3. SLAM Toolbox asynchronous mapper -->
+  <include file="$(find kora_k3)/launch/amcl.launch"/>
+
+  <!-- RViz visualization aligned with mapping workflow -->
+  <node pkg="rviz" type="rviz" name="mapping_rviz"
+        args="-d $(find kora_k3)/config/localization.rviz"
+        output="screen"/>
+</launch>

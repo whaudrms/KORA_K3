@@ -14,7 +14,7 @@ from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Pose2D
 from std_msgs.msg import Float64
 from obstacle.follow_the_gap import Follow_the_gap
-from path_tracking.lookahead import Pure_pursuit
+from kora_k3.src.path_tracking.pure_pursuit import Pure_pursuit
 from path_tracking.PID_control import PIDController
 import numpy as np
 
@@ -26,17 +26,18 @@ class Controller:
         self.follow_gap = Follow_the_gap()
         self.pure_pursuit = Pure_pursuit()
         self.gap_threshold = 0.7 # lidar detection range (m)
+        self.transfer = 1000/0.13
 
         self.scan_msg = None
         self.pose_msg = None
 
         # PID controllers (통합 제어)
         self.steer_pid = PIDController(Kp=0.4, Ki=0.0, Kd=0.12)
-        self.speed_pid = PIDController(Kp=20.0, Ki=5.0, Kd=20.0)
+        self.speed_pid = PIDController(Kp=5.0, Ki=5.0, Kd=20.0)
         self.current_mode = "pure_pursuit"
 
         # 속도 변환 파라미터
-        self.speed_cmd_limits = (5000, 15000)
+        self.speed_cmd_limits = (0.5*self.transfer , 2.0*self.transfer) # 0.13 m/s per 1000
         self.speed_weight = 0.5
         self.rpm_per_data = 0.025
         self.wheel_radius = 0.05
