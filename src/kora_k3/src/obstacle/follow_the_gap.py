@@ -28,7 +28,7 @@ class Follow_the_gap:
         ranges[np.isinf(ranges) | (ranges > scan_msg.range_max)] = 10
 
         angle_ranges = np.arange(len(ranges_raw)) * scan_msg.angle_increment - 3 * pi / 4
-        mask = (angle_ranges >= -60 / 180 * pi) & (angle_ranges <= 60 / 180 * pi)
+        mask = (angle_ranges >= -45 / 180 * pi) & (angle_ranges <= 45 / 180 * pi)
         proc_ranges = ranges[mask]
         angle_ranges = angle_ranges[mask]
 

@@ -44,9 +44,11 @@
     <param name="odom_alpha4" value="0.15"/>
 
     <!-- 초기 자세(원하면 RViz에서 /initialpose로 덮어쓰기) -->
-    <param name="initial_pose_x" value="0.0"/>
-    <param name="initial_pose_y" value="0.0"/>
-    <param name="initial_pose_a" value="-1.65"/>
+    <param name="initial_pose_x" value="-8.900"/>
+    <param name="initial_pose_y" value="1.115"/>
+    <param name="initial_pose_a" value="-0.059"/>
+    <!-- -8.900 1.115 -0.059 -->
+
     <param name="initial_cov_xx" value="0.25"/>
     <param name="initial_cov_yy" value="0.25"/>
     <param name="initial_cov_aa" value="0.0685"/>
