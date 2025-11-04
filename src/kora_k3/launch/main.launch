@@ -1,21 +1,7 @@
+<!-- file: mapping.launch -->
 <launch>
-  <!-- ========================= -->
-  <!-- (1) Map Server: 맵 퍼블리시 -->
-  <!-- ========================= -->
-  <!-- <node name="map_server" pkg="map_server" type="map_server"
-        args="$(find kora_k3)/maps/f3.yaml"
-        output="screen" />
- -->
-  <!-- ========================= -->
-  <!-- (3) Pure Pursuit 관련 노드 -->
-  <!-- ========================= -->
-  <node pkg="kora_k3" type="main.py"
-        name="main_node" output="screen" />
+  <include file="$(find kora_k3)/launch/localization.launch"/>
 
-  <node pkg="kora_k3" type="base_link_pub.py"
-        name="base_link_pub_node" output="screen" />
-
-  <node pkg="kora_k3" type="waypoint_visualization.py"
-        name="waypoint_visualization_node" output="screen" />
+  <include file="$(find kora_k3)/launch/drive_main.launch"/>
 
 </launch>
