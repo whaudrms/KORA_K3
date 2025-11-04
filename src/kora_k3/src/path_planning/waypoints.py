@@ -11,8 +11,8 @@ import pandas as pd
 from pathlib import Path
 
 # ================= 사용자 설정 =================
-YAML_PATH = "/root/KORA_K3/src/kora_k3/maps/f11.yaml"     # 예: "columbia.yaml"
-PGM_PATH  = "/root/KORA_K3/src/kora_k3/maps/f11.pgm"      # 예: "columbia.pgm"
+YAML_PATH = "/root/KORA_K3/src/kora_k3/maps/real.yaml"     # 예: "columbia.yaml"
+PGM_PATH  = "/root/KORA_K3/src/kora_k3/maps/real.pgm"      # 예: "columbia.pgm"
 OUTPUT_PREFIX = "/root/KORA_K3/src/kora_k3/src/path_planning/outputs/waypoints"  # 저장 prefix
 
 # 에디팅/리샘플/스무딩

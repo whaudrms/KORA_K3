@@ -42,7 +42,7 @@ class Controller:
         self.current_mode = "pure_pursuit"
 
         # 속도 변환 파라미터
-        self.speed_cmd_limits = (0.5*self.transfer , 2.0*self.transfer) # 0.13 m/s per 1000
+        self.speed_cmd_limits = (0.5*self.transfer , 1*self.transfer) # 0.13 m/s per 1000
         self.speed_weight = 0.5
         self.rpm_per_data = 0.025
         self.wheel_radius = 0.05
@@ -102,7 +102,7 @@ class Controller:
         steer_err = 0.0
         target_speed = self.pure_pursuit.target_speed
         mode = "pure_pursuit"
-        #print(mode)
+        print(mode)
 
         if min_distance <= self.gap_threshold and angle_ranges is not None:
             theta_err, safe_speed = self.follow_gap.compute_errors(
@@ -111,7 +111,7 @@ class Controller:
             steer_err = theta_err if theta_err is not None else 0.0
             target_speed = min(target_speed, safe_speed)
             mode = "gap_follow"
-            #print(mode)
+            print(mode)
         else:
             steer_err, cruise_speed = self.pure_pursuit.compute_errors(
                 self.pose_msg, current_speed=self.speed_est

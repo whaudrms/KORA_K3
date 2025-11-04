@@ -78,7 +78,7 @@ class WheelOdomNode(object):
             rospy.Subscriber(self.imu_topic, Imu, self.cb_imu, queue_size=50)
 
         # 50 Hz 타이머
-        self.timer = rospy.Timer(rospy.Duration(1.0/50.0), self.on_timer)
+        self.timer = rospy.Timer(rospy.Duration(1.0/100.0), self.on_timer)
 
         rospy.loginfo('wheel_odom node started [ROS1] (motor/servo inputs)')
 

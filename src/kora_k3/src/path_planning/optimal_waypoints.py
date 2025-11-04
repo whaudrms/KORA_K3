@@ -18,7 +18,7 @@ XI_ITERATIONS = int(os.environ.get("XI_ITERATIONS", "8"))         # 점별 이�
 LINE_ITERATIONS = int(os.environ.get("LINE_ITERATIONS", "500"))   # 전체 스캔 반복
 # 시각화용 맵 파일 (환경변수로 재정의 가능)
 _MAPS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "maps"))
-DEFAULT_MAP_BASENAME = "f10"
+DEFAULT_MAP_BASENAME = "real"
 MAP_YAML = os.environ.get("MAP_YAML", os.path.join(_MAPS_DIR, f"{DEFAULT_MAP_BASENAME}.yaml"))
 MAP_PGM = os.environ.get("MAP_PGM", os.path.join(_MAPS_DIR, f"{DEFAULT_MAP_BASENAME}.pgm"))
 OUTPUT_DIR = os.environ.get(
