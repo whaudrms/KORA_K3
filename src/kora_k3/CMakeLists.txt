@@ -164,7 +164,7 @@ catkin_install_python(PROGRAMS
   src/odometry/wheel_odom_node.py
   src/path_tracking/pure_pursuit.py
   src/obstacle/follow_the_gap.py
-  src/path_tracking/main.py
+  src/path_tracking/drive_main.py
   src/path_tracking/waypoint_visualization.py
   src/vehicle_dynamics/data_collection.py
   src/vehicle_dynamics/data/rosbag_to_csv.py
