@@ -37,12 +37,12 @@ class Controller:
         self.pose_msg = None
 
         # PID controllers (통합 제어)
-        self.steer_pid = PIDController(Kp=0.4, Ki=0.5, Kd=0.5) # Kp = 0.4 ,ki = 0.0 Kd = 0.5
+        self.steer_pid = PIDController(Kp=0.225, Ki=0.0, Kd=0.5) # Kp = 0.4 ,ki = 0.0 Kd = 0.5
         self.speed_pid = PIDController(Kp=5.0, Ki=5.0, Kd=20.0)
         self.current_mode = "pure_pursuit"
 
         # 속도 변환 파라미터
-        self.speed_cmd_limits = (1.0*self.transfer , 3.0*self.transfer) # 0.13 m/s per 1000
+        self.speed_cmd_limits = (1.0*self.transfer , 2.0*self.transfer) # 0.13 m/s per 1000
         self.speed_weight = 0.5
         self.rpm_per_data = 0.025
         self.wheel_radius = 0.05
@@ -102,7 +102,6 @@ class Controller:
         steer_err = 0.0
         target_speed = self.pure_pursuit.target_speed
         mode = "pure_pursuit"
-        print(mode)
 
         if min_distance <= self.gap_threshold and angle_ranges is not None:
             theta_err, safe_speed = self.follow_gap.compute_errors(
@@ -111,7 +110,6 @@ class Controller:
             steer_err = theta_err if theta_err is not None else 0.0
             target_speed = min(target_speed, safe_speed)
             mode = "gap_follow"
-            print(mode)
         else:
             steer_err, cruise_speed = self.pure_pursuit.compute_errors(
                 self.pose_msg, current_speed=self.speed_est
@@ -124,6 +122,7 @@ class Controller:
             self.steer_pid.reset()
             self.speed_pid.reset()
             self.current_mode = mode
+            rospy.loginfo(f"Controller mode: {mode}")
 
         steer_cmd = float(np.clip(self.steer_pid.compute(steer_err), -0.5, 0.5))
         servo_position = self.to_servo_angle(steer_cmd)
