@@ -4,7 +4,7 @@ wheel_odom:
   odom_frame: odom
   base_frame: base_link
   odom_topic: /wheel_odom
-  publish_tf: true
+  publish_tf: false
   body_forward_sign: 1.0
   use_imu_heading: true
   imu_topic: /imu/data_centered
